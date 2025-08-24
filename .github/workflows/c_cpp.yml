@@ -39,8 +39,8 @@ jobs:
             target: x86_64-unknown-linux-gnu
             staticlib_name: libfoxglove.a
             cdylib_name: libfoxglove.so
-            staticlib_artifact_name: libfoxglove-x86_64-24-unknown-linux-gnu.a
-            cdylib_artifact_name: libfoxglove-x86_64-24-unknown-linux-gnu.so
+            staticlib_artifact_name: libfoxglove-x86_64-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-x86_64-unknown-linux-gnu.so
             cross: false
             compiler: gcc
             skip_upload: false
@@ -50,8 +50,8 @@ jobs:
             target: aarch64-unknown-linux-gnu
             staticlib_name: libfoxglove.a
             cdylib_name: libfoxglove.so
-            staticlib_artifact_name: libfoxglove-aarch64-24-unknown-linux-gnu.a
-            cdylib_artifact_name: libfoxglove-aarch64-24-unknown-linux-gnu.so
+            staticlib_artifact_name: libfoxglove-aarch64-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-aarch64-unknown-linux-gnu.so
             cross: true
             compiler: gcc
             skip_upload: false
@@ -61,8 +61,8 @@ jobs:
             target: x86_64-unknown-linux-gnu
             staticlib_name: libfoxglove.a
             cdylib_name: libfoxglove.so
-            staticlib_artifact_name: libfoxglove-x86_64-22-unknown-linux-gnu.a
-            cdylib_artifact_name: libfoxglove-x86_64-22-unknown-linux-gnu.so
+            staticlib_artifact_name: libfoxglove-x86_64-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-x86_64-unknown-linux-gnu.so
             cross: false
             compiler: gcc
             skip_upload: false
@@ -72,8 +72,8 @@ jobs:
             target: aarch64-unknown-linux-gnu
             staticlib_name: libfoxglove.a
             cdylib_name: libfoxglove.so
-            staticlib_artifact_name: libfoxglove-aarch64-22-unknown-linux-gnu.a
-            cdylib_artifact_name: libfoxglove-aarch64-22-unknown-linux-gnu.so
+            staticlib_artifact_name: libfoxglove-aarch64-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-aarch64-unknown-linux-gnu.so
             cross: true
             compiler: gcc
             skip_upload: false
@@ -83,8 +83,8 @@ jobs:
             target: x86_64-unknown-linux-gnu
             staticlib_name: libfoxglove.a
             cdylib_name: libfoxglove.so
-            staticlib_artifact_name: libfoxglove-x86_64-20-unknown-linux-gnu.a
-            cdylib_artifact_name: libfoxglove-x86_64-20-unknown-linux-gnu.so
+            staticlib_artifact_name: libfoxglove-x86_64-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-x86_64-unknown-linux-gnu.so
             cross: false
             compiler: gcc
             skip_upload: false
@@ -94,8 +94,8 @@ jobs:
             target: aarch64-unknown-linux-gnu
             staticlib_name: libfoxglove.a
             cdylib_name: libfoxglove.so
-            staticlib_artifact_name: libfoxglove-aarch64-20-unknown-linux-gnu.a
-            cdylib_artifact_name: libfoxglove-aarch64-20-unknown-linux-gnu.so
+            staticlib_artifact_name: libfoxglove-aarch64-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-aarch64-unknown-linux-gnu.so
             cross: true
             compiler: gcc
             skip_upload: false
@@ -233,7 +233,7 @@ jobs:
         working-directory: artifacts
         run: |
           zip -r \
-            foxglove-${{inputs.sdk-version || github.sha}}-cpp-${{ matrix.target }}.zip \
+            foxglove-${{inputs.sdk-version || github.sha}}-cpp-${{ matrix.runner }}-${{ matrix.target }}.zip \
             foxglove/
 
       - name: Zip libraries for artifact (Windows)
@@ -241,7 +241,7 @@ jobs:
         working-directory: artifacts
         run: |
           7z a -tzip -sse `
-            foxglove-${{inputs.sdk-version || github.sha}}-cpp-${{ matrix.target }}.zip `
+            foxglove-${{inputs.sdk-version || github.sha}}-cpp-${{ matrix.runner }}-${{ matrix.target }}.zip `
             foxglove/
 
       - name: Upload static & shared library to artifacts
