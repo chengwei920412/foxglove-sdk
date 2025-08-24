@@ -34,26 +34,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # Linux
-          - runner: ubuntu-24.04
-            target: aarch64-unknown-linux-gnu
-            staticlib_name: libfoxglove.a
-            cdylib_name: libfoxglove.so
-            staticlib_artifact_name: libfoxglove-aarch64-unknown-linux-gnu.a
-            cdylib_artifact_name: libfoxglove-aarch64-unknown-linux-gnu.so
-            compiler: clang
-            cross: true
-            test_debug: false
-          - runner: ubuntu-24.04
-            target: x86_64-unknown-linux-gnu
-            staticlib_name: libfoxglove.a
-            cdylib_name: libfoxglove.so
-            staticlib_artifact_name: libfoxglove-x86_64-unknown-linux-gnu.a
-            cdylib_artifact_name: libfoxglove-x86_64-unknown-linux-gnu.so
-            compiler: clang
-            cross: false
-            test_debug: true
-
           # Linux (extra build to test GCC support)
           - runner: ubuntu-24.04
             target: x86_64-unknown-linux-gnu
@@ -268,8 +248,8 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ !(matrix.skip_upload || false) }}
         with:
-          name: foxglove-${{inputs.sdk-version || github.sha}}-cpp-${{ matrix.target }}.zip
-          path: artifacts/foxglove-${{inputs.sdk-version || github.sha}}-cpp-${{ matrix.target }}.zip
+          name: foxglove-${{inputs.sdk-version || github.sha}}-cpp-${{ matrixrunner }}-${{ matrix.target }}.zip
+          path: artifacts/foxglove-${{inputs.sdk-version || github.sha}}-cpp-${{ matrixrunner }}-${{ matrix.target }}.zip
           if-no-files-found: error
 
   test-asan-ubsan:
