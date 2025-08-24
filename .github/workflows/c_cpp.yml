@@ -59,13 +59,68 @@ jobs:
             target: x86_64-unknown-linux-gnu
             staticlib_name: libfoxglove.a
             cdylib_name: libfoxglove.so
-            staticlib_artifact_name: libfoxglove-x86_64-unknown-linux-gnu.a
-            cdylib_artifact_name: libfoxglove-x86_64-unknown-linux-gnu.so
+            staticlib_artifact_name: libfoxglove-x86_64-24-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-x86_64-24-unknown-linux-gnu.so
             cross: false
             compiler: gcc
-            skip_upload: true
-            test_debug: true
+            skip_upload: false
+            test_debug: false
+            
+          - runner: ubuntu-24.04
+            target: aarch64-unknown-linux-gnu
+            staticlib_name: libfoxglove.a
+            cdylib_name: libfoxglove.so
+            staticlib_artifact_name: libfoxglove-aarch64-24-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-aarch64-24-unknown-linux-gnu.so
+            cross: true
+            compiler: gcc
+            skip_upload: false
+            test_debug: false
+            
+          - runner: ubuntu-22.04
+            target: x86_64-unknown-linux-gnu
+            staticlib_name: libfoxglove.a
+            cdylib_name: libfoxglove.so
+            staticlib_artifact_name: libfoxglove-x86_64-22-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-x86_64-22-unknown-linux-gnu.so
+            cross: false
+            compiler: gcc
+            skip_upload: false
+            test_debug: false
+            
+          - runner: ubuntu-22.04
+            target: aarch64-unknown-linux-gnu
+            staticlib_name: libfoxglove.a
+            cdylib_name: libfoxglove.so
+            staticlib_artifact_name: libfoxglove-aarch64-22-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-aarch64-22-unknown-linux-gnu.so
+            cross: true
+            compiler: gcc
+            skip_upload: false
+            test_debug: false
 
+          - runner: ubuntu-20.04
+            target: x86_64-unknown-linux-gnu
+            staticlib_name: libfoxglove.a
+            cdylib_name: libfoxglove.so
+            staticlib_artifact_name: libfoxglove-x86_64-20-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-x86_64-20-unknown-linux-gnu.so
+            cross: false
+            compiler: gcc
+            skip_upload: false
+            test_debug: false
+            
+          - runner: ubuntu-20.04
+            target: aarch64-unknown-linux-gnu
+            staticlib_name: libfoxglove.a
+            cdylib_name: libfoxglove.so
+            staticlib_artifact_name: libfoxglove-aarch64-20-unknown-linux-gnu.a
+            cdylib_artifact_name: libfoxglove-aarch64-20-unknown-linux-gnu.so
+            cross: true
+            compiler: gcc
+            skip_upload: false
+            test_debug: false
+            
           # macOS
           - runner: macos-15
             target: aarch64-apple-darwin
